@@ -156,7 +156,7 @@ index 28e5a3a8..63559d7e 100644
 +endif
  # Keep a new line here!! Because someone may append config
 diff --git a/kernel/allowlist.c b/kernel/allowlist.c
-index 5822b1be..b4907053 100644
+index 511e91fc..95e7cfe8 100644
 --- a/kernel/allowlist.c
 +++ b/kernel/allowlist.c
 @@ -17,7 +17,9 @@

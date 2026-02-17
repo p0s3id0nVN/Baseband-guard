@@ -893,10 +893,9 @@ diff --git a/fs/proc/base.c b/fs/proc/base.c
 index b0ec673a2..c33994304 100644
 --- a/fs/proc/base.c
 +++ b/fs/proc/base.c
-@@ -100,6 +100,10 @@
+@@ -100,6 +100,9 @@
  #include <linux/cn_proc.h>
  #include <linux/cpufreq_times.h>
- #include <linux/dma-buf.h>
 +#ifdef CONFIG_KSU_SUSFS_SUS_MAP
 +#include <linux/susfs_def.h>
 +#endif

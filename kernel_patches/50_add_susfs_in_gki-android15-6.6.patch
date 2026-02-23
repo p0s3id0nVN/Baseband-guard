@@ -1122,15 +1122,15 @@ index e4380b37f..2de22bf75 100644
  
  		/*
 @@ -1735,6 +1814,9 @@ static ssize_t pagemap_read(struct file *file, char __user *buf,
- 	int ret = 0, copied = 0;
- 	unsigned int nr_subpages = __PAGE_SIZE / PAGE_SIZE;
- 	pagemap_entry_t *res = NULL;
+	struct mm_struct *mm = file->private_data;
+	struct pagemapread pm;
+	unsigned long src;
 +#ifdef CONFIG_KSU_SUSFS_SUS_MAP
 +	struct vm_area_struct *vma;
 +#endif
- 
- 	if (!mm || !mmget_not_zero(mm))
- 		goto out;
+	unsigned long svpfn;
+	unsigned long start_vaddr;
+	unsigned long end_vaddr;
 @@ -1810,6 +1892,18 @@ static ssize_t pagemap_read(struct file *file, char __user *buf,
  		if (ret)
  			goto out_free;

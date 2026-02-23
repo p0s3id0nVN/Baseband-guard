@@ -836,16 +836,17 @@ diff --git a/fs/proc/base.c b/fs/proc/base.c
 index 68d01c9ab..a34e299a7 100644
 --- a/fs/proc/base.c
 +++ b/fs/proc/base.c
-@@ -101,6 +101,9 @@
- #include <linux/ksm.h>
- #include <linux/cpufreq_times.h>
+@@ -103,6 +103,10 @@
  #include <linux/dma-buf.h>
+ #include <trace/events/oom.h>
+ #include <trace/hooks/sched.h>
 +#ifdef CONFIG_KSU_SUSFS_SUS_MAP
 +#include <linux/susfs_def.h>
 +#endif
- #include <trace/events/oom.h>
- #include <trace/hooks/sched.h>
++
  #include "internal.h"
+ #include "fd.h"
+ 
 @@ -932,6 +935,26 @@ static ssize_t mem_rw(struct file *file, char __user *buf,
  
  	while (count > 0) {
